@@ -1,2 +1,2 @@
-TOKEN = "bot:Token"
+BOT_TOKEN = "6925007502:AAHGEGOuUgTNiS995sXZA0gde3mPa4bsAbw"
 NAME = "Tilo.Me-Massage-Bot"
