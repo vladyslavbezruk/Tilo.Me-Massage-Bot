@@ -1,8 +1,6 @@
 import asyncio
 import logging
-
 from aiogram import Bot, Dispatcher
-
 from configurations.settings import *
 
 loop = asyncio.get_event_loop()
