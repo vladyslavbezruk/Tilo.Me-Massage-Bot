@@ -1,7 +1,7 @@
 from aiogram.filters import Command
 from aiogram.types import *
 
-from main import dp
+from bot.main import dp
 
 
 @dp.message(Command("start"))
