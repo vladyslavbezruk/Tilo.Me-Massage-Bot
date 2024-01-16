@@ -1,0 +1,15 @@
+{
+  "command_start": "start",
+
+  "start_answer_message": "How can we help you?",
+
+  "message_cancel": "Cancel",
+
+  "cancel_answer_message": "Cancelled",
+
+  "message_enroll": "Enroll",
+
+  "message_view_enrolls": "View my posts enrolls",
+
+  "start_keyboard_answer_message": "Select an action"
+}
