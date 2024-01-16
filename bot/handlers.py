@@ -17,9 +17,9 @@ async def echo(message: Message):
 
 @dp.message(lambda message: message.text == message_enroll)
 async def echo(message: Message):
-    await message.answer(text="Coming soon ...")
+    await message.answer(text="Coming soon ...", reply_markup=ReplyKeyboardRemove())
 
 
 @dp.message(lambda message: message.text == message_view_enrolls)
 async def echo(message: Message):
-    await message.answer(text="Coming soon ...")
+    await message.answer(text="Coming soon ...", reply_markup=ReplyKeyboardRemove())
