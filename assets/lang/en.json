@@ -1,15 +1,15 @@
 {
-  "command_start": "start",
+  "command_start": "Start",
 
-  "start_answer_message": "How can we help you?",
+  "start_answer_message": "How may we assist you?",
 
   "message_cancel": "Cancel",
 
   "cancel_answer_message": "Cancelled",
 
-  "message_enroll": "Enroll",
+  "message_enroll": "Book Online",
 
-  "message_view_enrolls": "View my posts enrolls",
+  "message_view_enrolls": "View my appointments",
 
   "start_keyboard_answer_message": "Select an action"
 }
