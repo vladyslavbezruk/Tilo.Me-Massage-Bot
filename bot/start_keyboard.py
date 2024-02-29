@@ -1,5 +1,4 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
-from assets.assets import *
 
 kb = [
     [

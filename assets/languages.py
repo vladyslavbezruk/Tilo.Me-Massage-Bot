@@ -1,7 +1,5 @@
-import os
-from configurations.settings import *
-
 import utils.jsons as jsons
+from configurations.settings import *
 
 available_languages = ['ua', 'en']
 

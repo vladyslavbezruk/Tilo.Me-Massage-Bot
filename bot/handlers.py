@@ -1,9 +1,10 @@
 from aiogram.filters import Command
 from aiogram.types import *
-from assets.assets import *
+
+from bot.enroll_keyboard import enroll_keyboard
 from bot.main import dp
 from bot.start_keyboard import start_keyboard
-from bot.enroll_keyboard import enroll_keyboard
+
 
 @dp.message(Command(command_start))
 async def echo(message: Message):
@@ -23,6 +24,7 @@ async def echo(message: Message):
 @dp.message(lambda message: message.text == message_view_enrolls)
 async def echo(message: Message):
     await message.reply(text="Coming soon ...", reply_markup=ReplyKeyboardRemove())
+
 
 @dp.message(lambda message: message.text in enroll_options)
 async def echo(message: Message):

@@ -6,4 +6,3 @@ PROJECT_DIR = os.getcwd()
 
 while os.path.basename(PROJECT_DIR) != BOT_NAME:
     PROJECT_DIR = os.path.dirname(PROJECT_DIR)
-
