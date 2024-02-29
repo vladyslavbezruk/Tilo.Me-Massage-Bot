@@ -1,9 +1,9 @@
 from aiogram.filters import Command
 from aiogram.types import *
 
-from bot.enroll_keyboard import enroll_keyboard
+from bot.keyboards.enroll_keyboard import enroll_keyboard
 from bot.main import dp
-from bot.start_keyboard import start_keyboard
+from bot.keyboards.start_keyboard import start_keyboard
 
 
 @dp.message(Command(command_start))
