@@ -1,4 +1,5 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
+from assets.assets import *
 
 enroll_options_buttons = [[KeyboardButton(text=enroll_option)] for enroll_option in enroll_options]
 

@@ -5,6 +5,7 @@ from bot.keyboards.enroll_keyboard import enroll_keyboard
 from bot.main import dp
 from bot.keyboards.start_keyboard import start_keyboard
 
+from assets.assets import *
 
 @dp.message(Command(command_start))
 async def echo(message: Message):
@@ -31,3 +32,5 @@ async def echo(message: Message):
     category = message.text
 
     await message.reply(text=chosen_enroll_options_answer_message + category)
+
+    await message.reply(text=chosen_enroll_options_answer_message2)
