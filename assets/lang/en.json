@@ -1,5 +1,5 @@
 {
-  "command_start": "Start",
+  "command_start": "start",
 
   "start_answer_message": "How may we assist you?",
 
@@ -9,7 +9,15 @@
 
   "message_enroll": "Book Online",
 
+  "enroll_answer_message": "Select a category for the entry",
+
+  "chosen_enroll_options_answer_message": "Wow! You chose ",
+
   "message_view_enrolls": "View my appointments",
 
-  "start_keyboard_answer_message": "Select an action"
+  "start_keyboard_answer_message": "Select an action",
+
+  "enroll_options": ["Diagnostic", "Anti-cellulite massage", "Honey modeling", "Honey mod. + anti-cellulite"],
+
+  "enroll_keyboard_answer_message": "Choose a category"
 }
