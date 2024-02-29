@@ -7,7 +7,7 @@ kb = [
         KeyboardButton(text=message_view_enrolls)
     ],
     [
-        KeyboardButton(text=message_cancel),
+        KeyboardButton(text=message_cancel)
     ]
 ]
 
