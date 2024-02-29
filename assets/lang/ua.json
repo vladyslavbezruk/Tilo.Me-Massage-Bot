@@ -9,7 +9,15 @@
 
   "message_enroll": "Записатись",
 
+  "enroll_answer_message": "Оберіть категорію для запису",
+
+  "chosen_enroll_options_answer_message": "Клас! Ти обрала ",
+
   "message_view_enrolls": "Переглянути мої записи",
 
-  "start_keyboard_answer_message": "Оберіть дію"
+  "start_keyboard_answer_message": "Оберіть дію",
+
+  "enroll_options": ["Діагностичний", "Антицелюлітний масаж", "Медове моделювання", "Медове мод. + антицелюлітний"],
+
+  "enroll_keyboard_answer_message": "Оберіть категорію"
 }
