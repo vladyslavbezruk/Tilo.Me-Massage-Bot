@@ -1,0 +1,37 @@
+{
+  "command_start": "start",
+
+  "user_not_found": "You are a new user. You need to enter your details to continue",
+
+  "register_keyboard_master": "I'm a master",
+
+  "register_keyboard_client": "I'm a client",
+
+  "register_enter_first_name": "What is your first name?",
+
+  "register_enter_last_name": "What is your last name?",
+
+  "start_answer_message": "How may we assist you?",
+
+  "message_cancel": "Cancel",
+
+  "cancel_answer_message": "Cancelled",
+
+  "message_enroll": "Book Online",
+
+  "enroll_answer_message": "Select a category for the entry",
+
+  "chosen_enroll_options_answer_message": "Wow! You chose ",
+
+  "chosen_enroll_options_answer_message2": "When are you planning a visit?",
+
+  "message_view_enrolls": "View my appointments",
+
+  "start_keyboard_answer_message": "Select an action",
+
+  "register_keyboard_answer_message": "Select an action",
+
+  "enroll_options": ["Diagnostic", "Anti-cellulite massage", "Honey modeling", "Honey mod. + anti-cellulite"],
+
+  "enroll_keyboard_answer_message": "Choose a category"
+}
