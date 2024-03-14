@@ -1,9 +1,9 @@
 import utils.files as files
 from configurations.settings import *
 
-users_file_path = os.path.join(PROJECT_DIR, "database", "users", "users.json")
+users_file_path = os.path.join(PROJECT_DIR, 'database', 'users', 'users.json')
 
-users = {}
+users = []
 
 
 def load_users():
@@ -17,7 +17,7 @@ def load_users():
 def create():
     global users
 
-    users = {}
+    users = []
 
 
 def save_users():
@@ -31,12 +31,13 @@ def check_user(tg_id):
     return False
 
 
-def add_user(user_type, tg_id, first_name, last_name):
+def add_user(user_type, tg_id, first_name, last_name, system_last_message):
     user = {
         'tg_id': tg_id,
         'user_type': user_type,
         'first_name': first_name,
-        'last_name': last_name
+        'last_name': last_name,
+        'system_last_message': system_last_message
     }
 
     users.append(user)
