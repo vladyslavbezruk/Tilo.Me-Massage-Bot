@@ -8,7 +8,7 @@ import assets.languages as languages
 from configurations.settings import *
 
 loop = asyncio.get_event_loop()
-bot = Bot(BOT_TOKEN, parse_mode="HTML")
+bot = Bot(BOT_TOKEN, parse_mode='HTML')
 dp = Dispatcher(loop=loop)
 
 languages.load_languages()
