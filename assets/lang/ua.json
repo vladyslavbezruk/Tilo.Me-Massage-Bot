@@ -1,6 +1,16 @@
 {
   "command_start": "start",
 
+  "user_not_found": "Ви новий користувач. Вам потрібно ввести свої дані, щоб продовжити",
+
+  "register_keyboard_master": "Я майстер",
+
+  "register_keyboard_client": "Я клієнт",
+
+  "register_enter_first_name": "Як вас звати? (введіть ім'я без прізвища)",
+
+  "register_enter_last_name": "Будь ласка, введіть своє прізвище",
+
   "start_answer_message": "Як ми можемо вам допомогти?",
 
   "message_cancel": "Скасувати",
@@ -18,6 +28,8 @@
   "message_view_enrolls": "Переглянути мої записи",
 
   "start_keyboard_answer_message": "Оберіть дію",
+
+  "register_keyboard_answer_message": "Оберіть дію",
 
   "enroll_options": ["Діагностичний", "Антицелюлітний масаж", "Медове моделювання", "Медове мод. + антицелюлітний"],
 
