@@ -12,7 +12,7 @@ bot = Bot(BOT_TOKEN, parse_mode='HTML')
 dp = Dispatcher(loop=loop)
 
 languages.load_languages()
-assets.set_language('en')
+assets.set_language('ua')
 
 
 async def main():
