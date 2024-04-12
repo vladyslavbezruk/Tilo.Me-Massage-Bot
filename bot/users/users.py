@@ -31,18 +31,28 @@ def check_user(tg_id):
     return False
 
 
-def add_user(user_type, tg_id, first_name, last_name, system_last_message):
-    user = {
-        'tg_id': tg_id,
-        'user_type': user_type,
-        'first_name': first_name,
-        'last_name': last_name,
-        'system_last_message': system_last_message
-    }
+def add_user(user_type, tg_id, first_name, last_name, address, schedule, system_last_message):
+    if check_user(tg_id) is False:
+        user = {
+            'tg_id': tg_id,
+            'user_type': user_type,
+            'first_name': first_name,
+            'last_name': last_name,
+            'address': address,
+            'schedule': schedule,
+            'system_last_message': system_last_message
+        }
 
-    users.append(user)
+        users.append(user)
 
-    save_users()
+        save_users()
+
+
+def remove_user(tg_id):
+    if check_user(tg_id) is True:
+        users.pop(search_user(tg_id))
+
+        save_users()
 
 
 def search_user(tg_id):

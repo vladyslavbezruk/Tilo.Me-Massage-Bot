@@ -1,6 +1,6 @@
 import os
 
-BOT_TOKEN = '6925007502:AAHGEGOuUgTNiS995sXZA0gde3mPa4bsAbw'
+BOT_TOKEN = '6925007502:AAEf-9tnhov2YztwFj7HyPWT4jyB8p_3XWE'
 BOT_NAME = 'Tilo.Me-Massage-Bot'
 PROJECT_DIR = os.getcwd()
 
