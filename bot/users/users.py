@@ -88,4 +88,18 @@ def get_user_type(tg_id):
     return get(tg_id, 'user_type')
 
 
+def get_all_master_names():
+    master_names = []
+
+    for user in users:
+        if user['user_type'] == 'master':
+            full_name = user['first_name'] + ' ' + user['last_name']
+
+            master_names.append(full_name)
+
+    if len(master_names) > 0:
+        return master_names
+    return None
+
+
 load_users()
