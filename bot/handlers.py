@@ -5,6 +5,7 @@ from aiogram.types import *
 
 from bot.keyboards.cancel_keyboard import cancel_keyboard
 from bot.keyboards.enroll_keyboard import enroll_keyboard
+from bot.keyboards.enroll_keyboard import get_master_names_keyboard
 from bot.keyboards.register_keyboard import register_keyboard
 from bot.keyboards.schedule_keyboard import get_schedule_keyboard
 
@@ -59,10 +60,20 @@ async def echo(message: Message):
 
     await message.reply(text=chosen_enroll_options_answer_message + category)
 
-    await message.reply(text=chosen_enroll_options_answer_message2)
+    master_names_keyboard = get_master_names_keyboard()
+
+    if master_names_keyboard is None:
+        await message.reply(text=chosen_enroll_options_answer_message2_no_masters, reply_markup=cancel_keyboard)
+    else:
+        await message.reply(text=chosen_enroll_options_answer_message2, reply_markup=get_master_names_keyboard())
 
     users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message2')
 
+@dp.message(lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message2')
+async def echo(message: Message):
+    await message.reply(text=chosen_enroll_options_answer_message3, reply_markup=cancel_keyboard)
+
+    users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message3')
 
 @dp.message(lambda message: message.text == register_keyboard_client)
 async def echo(message: Message):
