@@ -69,6 +69,11 @@ async def echo(message: Message):
 
     users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message2')
 
+@dp.message(lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message2')
+async def echo(message: Message):
+    await message.reply(text=chosen_enroll_options_answer_message3, reply_markup=cancel_keyboard)
+
+    users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message3')
 
 @dp.message(lambda message: message.text == register_keyboard_client)
 async def echo(message: Message):
