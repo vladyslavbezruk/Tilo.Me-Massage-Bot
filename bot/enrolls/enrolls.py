@@ -1,5 +1,10 @@
+import copy
+
 import utils.files as files
 from configurations.settings import *
+import bot.users.users as users
+
+from assets.assets import *
 
 enrolls_file_path = os.path.join(PROJECT_DIR, 'database', 'enrolls', 'enrolls.json')
 
@@ -43,35 +48,86 @@ def add_enroll(status, client_tg_id, master_tg_id, category, date_view, date, ti
 
 def set_value(settings_find_by, setting_set, value_set):
     for enroll in enrolls:
+        flag = True
+
         for setting_find_by in settings_find_by:
             if enroll[setting_find_by] != settings_find_by[setting_find_by]:
-                continue
+                flag = False
+                break
 
-        enroll[setting_set] = value_set
-        break
+        if flag:
+            enroll[setting_set] = value_set
+            break
 
     save_enrolls()
 
 
 def get_value(settings_find_by, setting_get):
     for enroll in enrolls:
+        flag = True
+
         for setting_find_by in settings_find_by:
             if enroll[setting_find_by] != settings_find_by[setting_find_by]:
-                continue
+                flag = False
+                break
 
-        return enroll[setting_get]
+        if flag:
+            return enroll[setting_get]
 
     return None
 
-def check_enroll(settings_find_by):
+
+def get_enrolls(settings_find_by):
+    found_enrolls = []
+
     for enroll in enrolls:
+        flag = True
+
         for setting_find_by in settings_find_by:
             if enroll[setting_find_by] != settings_find_by[setting_find_by]:
-                continue
+                flag = False
+                break
 
-        return True
+        if flag:
+            found_enrolls.append(copy.deepcopy(enroll))
+
+    return found_enrolls
+
+
+def check_enroll(settings_find_by):
+    for enroll in enrolls:
+        flag = True
+
+        for setting_find_by in settings_find_by:
+            if enroll[setting_find_by] != settings_find_by[setting_find_by]:
+                flag = False
+                break
+
+        if flag:
+            return True
 
     return False
+
+
+def get_enroll_description(enroll):
+    enroll_id = str(enroll['id'])
+    category = enroll['category']
+    date = enroll['date']
+    time = enroll['time']
+    price = str(enroll_prices[category])
+    master_first_name = str(users.get(enroll['master_tg_id'], 'first_name'))
+    master_last_name = str(users.get(enroll['master_tg_id'], 'last_name'))
+
+    master_fullname = master_first_name + ' ' + master_last_name
+    address = users.get(enroll['master_tg_id'], 'address')
+
+    return ('ID: ' + enroll_id + '\n' +
+            'Послуги: ' + category + '\n' +
+            'Вартість: ' + price + '\n' +
+            'Адреса: ' + address + '\n' +
+            'Час: ' + time + '\n' +
+            'Майстер: ' + master_fullname + '\n' +
+            'Дата: ' + date + '\n')
 
 
 load_enrolls()
