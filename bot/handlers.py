@@ -55,7 +55,19 @@ async def echo(message: Message):
 
 @dp.message(lambda message: message.text == message_view_enrolls)
 async def echo(message: Message):
-    await message.reply(text='Coming soon ...', reply_markup=ReplyKeyboardRemove())
+    user_tg_id = message.from_user.id
+
+    if not enrolls.check_enroll({
+        'client_tg_id': user_tg_id,
+        'status': 'opened'
+    }):
+        await message.reply(text=message_view_enrolls_answer_no_enrolls)
+
+        await message.reply(text=start_answer_message, reply_markup=start_keyboard)
+
+        users.set_value(user_tg_id, 'system_last_message', 'start_answer_message')
+
+        return
 
 
 @dp.message(lambda message: message.text in enroll_options)
@@ -138,6 +150,29 @@ async def echo(message: Message):
         enrolls.set_value(
             {'client_tg_id': client_tg_id, 'status': 'last_edited'},
             'date_view', date_view.strftime("%m.%d.%Y"))
+
+        return
+
+    datetime_enroll = user_answer.split(" ")
+
+    if datetime_enroll[0] == "❌":
+        await message.reply(text=chosen_enroll_options_answer_message3_error)
+
+        await message.reply(text=chosen_enroll_options_answer_message3,
+                            reply_markup=get_master_free_datetime(master_tg_id, date_view))
+    else:
+        date_enroll = datetime_enroll[1] + '.' + str(datetime.now().year)
+        time_enroll = datetime_enroll[2]
+
+        enrolls.set_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+            'date', date_enroll)
+
+        enrolls.set_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+            'time', time_enroll)
+
+        await message.reply(text=chosen_enroll_options_answer_message4 + date_enroll + ' ' + time_enroll)
 
 
 @dp.message(lambda message: message.text == register_keyboard_client)

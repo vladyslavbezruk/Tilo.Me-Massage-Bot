@@ -19,7 +19,7 @@
 
   "message_cancel": "Скасувати",
 
-  "cancel_answer_message": "Скасовано",
+  "cancel_answer_message": "Скасовано. Напишіть /start, щоб почати діалог з ботом",
 
   "message_enroll": "Записатись",
 
@@ -31,7 +31,7 @@
 
   "chosen_enroll_options_answer_message2_no_masters": "На жаль, в системі немає зареєстрованих майстрів",
 
-  "chosen_enroll_options_answer_message3": "Чудово, а коли плануєте візит?",
+  "chosen_enroll_options_answer_message3": "Чудово, а коли плануєте візит? (натисніть на відповідну клітинку, щоб обрати дату та час для запису)",
 
   "message_view_enrolls": "Переглянути мої записи",
 
@@ -57,5 +57,11 @@
 
   "master_free_datetime_keyboard_next_month": "Наступний місяць",
 
-  "master_free_datetime_keyboard_prev_month": "Попередній місяць"
+  "master_free_datetime_keyboard_prev_month": "Попередній місяць",
+
+  "chosen_enroll_options_answer_message3_error": "Вибрані дата і час зайняті або майстер не працює в цей день",
+
+  "chosen_enroll_options_answer_message4": "Клас! Зустрічаємось з ",
+
+  "message_view_enrolls_answer_no_enrolls": "Бачу, що поки ніякі б'юті-медитації не заплановані"
 }
