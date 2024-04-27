@@ -55,7 +55,19 @@ async def echo(message: Message):
 
 @dp.message(lambda message: message.text == message_view_enrolls)
 async def echo(message: Message):
-    await message.reply(text='Coming soon ...', reply_markup=ReplyKeyboardRemove())
+    user_tg_id = message.from_user.id
+
+    if not enrolls.check_enroll({
+        'client_tg_id': user_tg_id,
+        'status': 'opened'
+    }):
+        await message.reply(text=message_view_enrolls_answer_no_enrolls)
+
+        await message.reply(text=start_answer_message, reply_markup=start_keyboard)
+
+        users.set_value(user_tg_id, 'system_last_message', 'start_answer_message')
+
+        return
 
 
 @dp.message(lambda message: message.text in enroll_options)

@@ -26,6 +26,7 @@ def save_enrolls():
 
 def add_enroll(status, client_tg_id, master_tg_id, category, date_view, date, time):
     enroll = {
+        'id': '#' + str(len(enrolls)),
         'status': status,
         'client_tg_id': client_tg_id,
         'master_tg_id': master_tg_id,

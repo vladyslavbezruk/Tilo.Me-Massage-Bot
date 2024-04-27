@@ -19,7 +19,7 @@
 
   "message_cancel": "Скасувати",
 
-  "cancel_answer_message": "Скасовано",
+  "cancel_answer_message": "Скасовано. Напишіть /start, щоб почати діалог з ботом",
 
   "message_enroll": "Записатись",
 
@@ -61,5 +61,7 @@
 
   "chosen_enroll_options_answer_message3_error": "Вибрані дата і час зайняті або майстер не працює в цей день",
 
-  "chosen_enroll_options_answer_message4": "Клас! Зустрічаємось з "
+  "chosen_enroll_options_answer_message4": "Клас! Зустрічаємось з ",
+
+  "message_view_enrolls_answer_no_enrolls": "Бачу, що поки ніякі б'юті-медитації не заплановані"
 }

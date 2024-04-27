@@ -19,7 +19,7 @@
 
   "message_cancel": "Cancel",
 
-  "cancel_answer_message": "Cancelled",
+  "cancel_answer_message": "Cancelled. Write /start to start a dialog with the bot",
 
   "message_enroll": "Book Online",
 
@@ -61,5 +61,7 @@
 
   "chosen_enroll_options_answer_message3_error": "The selected date and time are busy or the wizard does not work on this day",
 
-  "chosen_enroll_options_answer_message4": "Wow! We will meet on "
+  "chosen_enroll_options_answer_message4": "Wow! We will meet on ",
+
+  "message_view_enrolls_answer_no_enrolls": "I see that no beauty meditations are planned yet"
 }
