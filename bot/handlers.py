@@ -139,6 +139,29 @@ async def echo(message: Message):
             {'client_tg_id': client_tg_id, 'status': 'last_edited'},
             'date_view', date_view.strftime("%m.%d.%Y"))
 
+        return
+
+    datetime_enroll = user_answer.split(" ")
+
+    if datetime_enroll[0] == "❌":
+        await message.reply(text=chosen_enroll_options_answer_message3_error)
+
+        await message.reply(text=chosen_enroll_options_answer_message3,
+                            reply_markup=get_master_free_datetime(master_tg_id, date_view))
+    else:
+        date_enroll = datetime_enroll[1] + '.' + str(datetime.now().year)
+        time_enroll = datetime_enroll[2]
+
+        enrolls.set_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+            'date', date_enroll)
+
+        enrolls.set_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+            'time', time_enroll)
+
+        await message.reply(text=chosen_enroll_options_answer_message4 + date_enroll + ' ' + time_enroll)
+
 
 @dp.message(lambda message: message.text == register_keyboard_client)
 async def echo(message: Message):

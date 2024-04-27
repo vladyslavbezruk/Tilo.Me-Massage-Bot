@@ -57,5 +57,9 @@
 
   "master_free_datetime_keyboard_next_month": "Next month",
 
-  "master_free_datetime_keyboard_prev_month": "Previous month"
+  "master_free_datetime_keyboard_prev_month": "Previous month",
+
+  "chosen_enroll_options_answer_message3_error": "The selected date and time are busy or the wizard does not work on this day",
+
+  "chosen_enroll_options_answer_message4": "Wow! We will meet on "
 }
