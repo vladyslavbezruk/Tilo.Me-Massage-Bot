@@ -49,5 +49,13 @@
 
   "register_enter_schedule": "Please, enter your schedule for receiving clients (click on the appropriate cells to activate or deactivate them)",
 
-  "schedule_days": {"monday": "Mo", "tuesday": "Tu", "wednesday": "We", "thursday": "Th", "friday":  "Fr", "saturday":  "Sa", "sunday": "Su"}
+  "schedule_days": {"monday": "Mo", "tuesday": "Tu", "wednesday": "We", "thursday": "Th", "friday":  "Fr", "saturday":  "Sa", "sunday": "Su"},
+
+  "master_free_datetime_keyboard_next_week": "Next week",
+
+  "master_free_datetime_keyboard_prev_week": "Previous week",
+
+  "master_free_datetime_keyboard_next_month": "Next month",
+
+  "master_free_datetime_keyboard_prev_month": "Previous month"
 }

@@ -49,5 +49,13 @@
 
   "register_enter_schedule": "Будь ласка, вкажіть ваш графік прийому клієнтів (натисніть на відповідні клітинки, щоб активувати або деактивувати їх)",
 
-  "schedule_days": {"monday": "Пн", "tuesday": "Вт", "wednesday": "Ср", "thursday": "Чт", "friday":  "Пт", "saturday":  "Сб", "sunday": "Нд"}
+  "schedule_days": {"monday": "Пн", "tuesday": "Вт", "wednesday": "Ср", "thursday": "Чт", "friday":  "Пт", "saturday":  "Сб", "sunday": "Нд"},
+
+  "master_free_datetime_keyboard_next_week": "Наступний тиждень",
+
+  "master_free_datetime_keyboard_prev_week": "Попередній тиждень",
+
+  "master_free_datetime_keyboard_next_month": "Наступний місяць",
+
+  "master_free_datetime_keyboard_prev_month": "Попередній місяць"
 }

@@ -73,27 +73,72 @@ async def echo(message: Message):
 
         client_tg_id = message.from_user.id
 
-        enrolls.add_enroll('last_edited', client_tg_id, '', category, '', '')
+        enrolls.add_enroll('last_edited', client_tg_id, '', category, '', '', '')
 
     users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message2')
 
-@dp.message(lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message2')
+
+@dp.message(
+    lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message2')
 async def echo(message: Message):
     client_tg_id = message.from_user.id
     master_full_name = message.text
     master_tg_id = users.get_tg_id_by_full_name(master_full_name)
     date_view = datetime.now() + timedelta(days=1)
 
-    enrolls.set_value('client_tg_id', client_tg_id, 'master_tg_id', master_tg_id)
+    enrolls.set_value(
+        {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+        'master_tg_id', master_tg_id)
+
+    enrolls.set_value(
+        {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+        'date_view', date_view.strftime("%m.%d.%Y"))
 
     await message.reply(text=chosen_enroll_options_answer_message3,
                         reply_markup=get_master_free_datetime(master_tg_id, date_view))
 
     users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message3')
 
-@dp.message(lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message3')
+
+@dp.message(
+    lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message3')
 async def echo(message: Message):
-    print('Coming soon ...')
+    client_tg_id = message.from_user.id
+    master_tg_id = enrolls.get_value(
+        {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+        'master_tg_id')
+
+    user_answer = message.text
+
+    date_view = datetime.strptime(
+        enrolls.get_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+                'date_view'),
+                "%m.%d.%Y")
+
+    changed_date_view = False
+
+    if user_answer == master_free_datetime_keyboard_next_week:
+        date_view = date_view + timedelta(days=7)
+        changed_date_view = True
+    if user_answer == master_free_datetime_keyboard_prev_week:
+        date_view = date_view - timedelta(days=7)
+        changed_date_view = True
+    if user_answer == master_free_datetime_keyboard_next_month:
+        date_view = date_view + timedelta(days=30)
+        changed_date_view = True
+    if user_answer == master_free_datetime_keyboard_prev_month:
+        date_view = date_view - timedelta(days=30)
+        changed_date_view = True
+
+    if changed_date_view:
+        await message.reply(text=chosen_enroll_options_answer_message3,
+                            reply_markup=get_master_free_datetime(master_tg_id, date_view))
+
+        enrolls.set_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+            'date_view', date_view.strftime("%m.%d.%Y"))
+
 
 @dp.message(lambda message: message.text == register_keyboard_client)
 async def echo(message: Message):

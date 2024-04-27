@@ -1,5 +1,6 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 import bot.users.users as users
+import bot.enrolls.enrolls as enrolls
 from assets.assets import *
 from datetime import datetime, timedelta
 
@@ -41,7 +42,11 @@ def get_master_free_datetime(master_tg_id, date):
         kb_day = []
 
         for time in master_schedule[day_name]:
-            accepts = master_schedule[day_name][time]
+            accepts = master_schedule[day_name][time] and enrolls.check_enroll({
+                "master_tg_id": master_tg_id,
+                "time": time,
+                "date": date.strftime("%m.%d.%Y")
+            })
 
             (kb_day.append(KeyboardButton(text=('✅' if accepts else '❌') + ' ' +
                                                date.strftime("%d.%m") + ' ' + time)))
@@ -52,6 +57,16 @@ def get_master_free_datetime(master_tg_id, date):
                 kb_day = []
 
         date = date + timedelta(days=1)
+
+    kb_next_week = [KeyboardButton(text=master_free_datetime_keyboard_next_week)]
+    kb_prev_week = [KeyboardButton(text=master_free_datetime_keyboard_prev_week)]
+    kb_next_month = [KeyboardButton(text=master_free_datetime_keyboard_next_month)]
+    kb_prev_month = [KeyboardButton(text=master_free_datetime_keyboard_prev_month)]
+
+    kb.append(kb_next_week)
+    kb.append(kb_prev_week)
+    kb.append(kb_next_month)
+    kb.append(kb_prev_month)
 
     master_free_datetime_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                                         one_time_keyboard=True, keyboard=kb)

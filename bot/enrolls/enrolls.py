@@ -24,12 +24,13 @@ def save_enrolls():
     files.save_file(enrolls, enrolls_file_path)
 
 
-def add_enroll(status, client_tg_id, master_tg_id, category, date, time):
+def add_enroll(status, client_tg_id, master_tg_id, category, date_view, date, time):
     enroll = {
         'status': status,
         'client_tg_id': client_tg_id,
         'master_tg_id': master_tg_id,
         'category': category,
+        'date_view': date_view,
         'date': date,
         'time': time
     }
@@ -39,12 +40,37 @@ def add_enroll(status, client_tg_id, master_tg_id, category, date, time):
     save_enrolls()
 
 
-def set_value(setting_find_by, value_find_by, setting_set, value_set):
+def set_value(settings_find_by, setting_set, value_set):
     for enroll in enrolls:
-        if enroll[setting_find_by] == value_find_by:
-            enroll[setting_set] = value_set
+        for setting_find_by in settings_find_by:
+            if enroll[setting_find_by] != settings_find_by[setting_find_by]:
+                continue
+
+        enroll[setting_set] = value_set
+        break
 
     save_enrolls()
+
+
+def get_value(settings_find_by, setting_get):
+    for enroll in enrolls:
+        for setting_find_by in settings_find_by:
+            if enroll[setting_find_by] != settings_find_by[setting_find_by]:
+                continue
+
+        return enroll[setting_get]
+
+    return None
+
+def check_enroll(settings_find_by):
+    for enroll in enrolls:
+        for setting_find_by in settings_find_by:
+            if enroll[setting_find_by] != settings_find_by[setting_find_by]:
+                continue
+
+        return True
+
+    return False
 
 
 load_enrolls()
