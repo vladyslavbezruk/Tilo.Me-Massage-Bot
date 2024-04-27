@@ -39,4 +39,12 @@ def add_enroll(status, client_tg_id, master_tg_id, category, date, time):
     save_enrolls()
 
 
+def set_value(setting_find_by, value_find_by, setting_set, value_set):
+    for enroll in enrolls:
+        if enroll[setting_find_by] == value_find_by:
+            enroll[setting_set] = value_set
+
+    save_enrolls()
+
+
 load_enrolls()

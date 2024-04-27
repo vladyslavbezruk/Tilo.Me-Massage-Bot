@@ -102,4 +102,14 @@ def get_all_master_names():
     return None
 
 
+def get_tg_id_by_full_name(full_name):
+    first_name, last_name = full_name.split(' ')
+
+    for user in users:
+        if user['first_name'] == first_name and user['last_name'] == last_name:
+            return user['tg_id']
+
+    return None
+
+
 load_users()

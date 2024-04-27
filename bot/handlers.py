@@ -12,6 +12,7 @@ from bot.keyboards.schedule_keyboard import get_schedule_keyboard
 from bot.main import dp
 from bot.keyboards.start_keyboard import start_keyboard
 import bot.users.users as users
+import bot.enrolls.enrolls as enrolls
 import bot.users.schedule as schedule
 
 from assets.assets import *
@@ -67,10 +68,20 @@ async def echo(message: Message):
     else:
         await message.reply(text=chosen_enroll_options_answer_message2, reply_markup=get_master_names_keyboard())
 
+        client_tg_id = message.from_user.id
+
+        enrolls.add_enroll('last_edited', client_tg_id, '', category, '', '')
+
     users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message2')
 
 @dp.message(lambda message: users.get(message.from_user.id, 'system_last_message') == 'chosen_enroll_options_answer_message2')
 async def echo(message: Message):
+    client_tg_id = message.from_user.id
+    master_full_name = message.text
+    master_tg_id = users.get_tg_id_by_full_name(master_full_name)
+
+    enrolls.set_value('client_tg_id', client_tg_id, 'master_tg_id', master_tg_id)
+
     await message.reply(text=chosen_enroll_options_answer_message3, reply_markup=cancel_keyboard)
 
     users.set_value(message.from_user.id, 'system_last_message', 'chosen_enroll_options_answer_message3')
