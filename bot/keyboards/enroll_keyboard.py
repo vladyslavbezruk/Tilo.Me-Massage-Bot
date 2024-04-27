@@ -32,31 +32,32 @@ def get_master_names_keyboard():
     return master_names_keyboard
 
 
-def get_master_free_datetime(master_tg_id, date):
+def get_master_free_datetime(master_tg_id, date_view):
     kb = []
     master_schedule = users.get(master_tg_id, 'schedule')
 
     for i in range(7):
-        day_name = date.strftime("%A").lower()
+        day_name = date_view.strftime("%A").lower()
 
         kb_day = []
 
         for time in master_schedule[day_name]:
-            accepts = master_schedule[day_name][time] and enrolls.check_enroll({
+            accepts = master_schedule[day_name][time] and not enrolls.check_enroll({
+                "status": "opened",
                 "master_tg_id": master_tg_id,
                 "time": time,
-                "date": date.strftime("%m.%d.%Y")
-            })
+                "date": date_view.strftime("%d.%m.%Y")
+            }) and date_view >= (datetime.now() + timedelta(days=1)).date()
 
             (kb_day.append(KeyboardButton(text=('✅' if accepts else '❌') + ' ' +
-                                               date.strftime("%d.%m") + ' ' + time)))
+                                               date_view.strftime("%d.%m") + ' ' + time)))
 
             if len(kb_day) == 3:
                 kb.append(kb_day)
 
                 kb_day = []
 
-        date = date + timedelta(days=1)
+        date_view = date_view + timedelta(days=1)
 
     kb_next_week = [KeyboardButton(text=master_free_datetime_keyboard_next_week)]
     kb_prev_week = [KeyboardButton(text=master_free_datetime_keyboard_prev_week)]

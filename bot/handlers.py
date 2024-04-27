@@ -66,8 +66,16 @@ async def echo(message: Message):
         await message.reply(text=start_answer_message, reply_markup=start_keyboard)
 
         users.set_value(user_tg_id, 'system_last_message', 'start_answer_message')
+    else:
+        found_enrolls = enrolls.get_enrolls({
+            'client_tg_id': user_tg_id,
+            'status': 'opened'
+        })
 
-        return
+        for enroll in found_enrolls:
+            enroll_description = enrolls.get_enroll_description(enroll)
+
+            await message.reply(text=enroll_description)
 
 
 @dp.message(lambda message: message.text in enroll_options)
@@ -96,7 +104,7 @@ async def echo(message: Message):
     client_tg_id = message.from_user.id
     master_full_name = message.text
     master_tg_id = users.get_tg_id_by_full_name(master_full_name)
-    date_view = datetime.now() + timedelta(days=1)
+    date_view = (datetime.now() + timedelta(days=1)).date()
 
     enrolls.set_value(
         {'client_tg_id': client_tg_id, 'status': 'last_edited'},
@@ -104,7 +112,7 @@ async def echo(message: Message):
 
     enrolls.set_value(
         {'client_tg_id': client_tg_id, 'status': 'last_edited'},
-        'date_view', date_view.strftime("%m.%d.%Y"))
+        'date_view', date_view.strftime("%d.%m.%Y"))
 
     await message.reply(text=chosen_enroll_options_answer_message3,
                         reply_markup=get_master_free_datetime(master_tg_id, date_view))
@@ -126,7 +134,7 @@ async def echo(message: Message):
         enrolls.get_value(
             {'client_tg_id': client_tg_id, 'status': 'last_edited'},
                 'date_view'),
-                "%m.%d.%Y")
+        "%d.%m.%Y").date()
 
     changed_date_view = False
 
@@ -149,7 +157,7 @@ async def echo(message: Message):
 
         enrolls.set_value(
             {'client_tg_id': client_tg_id, 'status': 'last_edited'},
-            'date_view', date_view.strftime("%m.%d.%Y"))
+            'date_view', date_view.strftime("%d.%m.%Y"))
 
         return
 
@@ -173,6 +181,17 @@ async def echo(message: Message):
             'time', time_enroll)
 
         await message.reply(text=chosen_enroll_options_answer_message4 + date_enroll + ' ' + time_enroll)
+
+        enrolls.set_value(
+            {'client_tg_id': client_tg_id, 'status': 'last_edited'},
+            'status', 'opened')
+
+        user_tg_id = client_tg_id
+
+        if users.get_user_type(user_tg_id) == 'client':
+            await message.reply(text=start_answer_message, reply_markup=start_keyboard)
+
+        users.set_value(user_tg_id, 'system_last_message', 'start_answer_message')
 
 
 @dp.message(lambda message: message.text == register_keyboard_client)

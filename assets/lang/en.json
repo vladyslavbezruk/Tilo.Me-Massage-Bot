@@ -41,6 +41,8 @@
 
   "enroll_options": ["Diagnostic", "Anti-cellulite massage", "Honey modeling", "Honey mod. + anti-cellulite"],
 
+  "enroll_prices": {"Diagnostic": 500, "Anti-cellulite massage": 600, "Honey modeling":  700, "Honey mod. + anti-cellulite": 800},
+
   "enroll_keyboard_answer_message": "Choose a category",
 
   "register_completed_answer_message": "You have successfully registered in the system!",
